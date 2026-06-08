@@ -6,6 +6,7 @@ export default function StatsCards({ stats }) {
       change: stats.incomeChange,
       positive: true,
       icon: '💰',
+      border: 'border-l-4 border-l-green-400',
     },
     {
       title: 'Customers',
@@ -13,6 +14,7 @@ export default function StatsCards({ stats }) {
       change: stats.customersChange,
       positive: true,
       icon: '👤',
+      border: 'border-l-4 border-l-blue-400',
     },
     {
       title: 'Employees',
@@ -20,6 +22,7 @@ export default function StatsCards({ stats }) {
       change: stats.employeesChange,
       positive: true,
       icon: '👥',
+      border: 'border-l-4 border-l-purple-400',
     },
     {
       title: 'Total Expenses',
@@ -27,13 +30,17 @@ export default function StatsCards({ stats }) {
       change: stats.expensesChange,
       positive: false,
       icon: '📉',
+      border: 'border-l-4 border-l-red-400',
     },
   ]
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
       {cards.map((card) => (
-        <div key={card.title} className="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
+        <div
+          key={card.title}
+          className={`bg-white rounded-xl border border-gray-100 p-4 shadow-sm transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:shadow-xl cursor-pointer ${card.border}`}
+        >
           <div className="flex items-center justify-between mb-2">
             <p className="text-xs text-gray-500">{card.title}</p>
             <span className="text-xl">{card.icon}</span>

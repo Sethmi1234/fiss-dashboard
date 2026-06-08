@@ -1,5 +1,5 @@
 export const statsData = {
-  totalIncome: 502000,
+  totalIncome: 102000,
   customers: 3,
   employees: 2,
   totalExpenses: 40000,
@@ -10,31 +10,31 @@ export const statsData = {
 }
 
 export const recentTransactions = [
-  { id: 1, customer: 'Dmp Dissanayake C', type: 'Loan Repayment', date: '6/5/2026', txnType: 'Debit', amount: 2000, positive: true },
-  { id: 2, customer: 'Dmp Dissanayake C', type: 'Loan Disbursement', date: '6/5/2026', txnType: 'Credit', amount: 10000, positive: false },
+  { id: 1, customer: 'Sethmi Didulani', type: 'Loan Repayment', date: '6/6/2026', txnType: 'Debit', amount: 2000, positive: true },
+  { id: 2, customer: 'Sethmi Didulani', type: 'Loan Disbursement', date: '6/4/2026', txnType: 'Credit', amount: 10000, positive: false },
   { id: 3, customer: 'Intern Salary', type: 'Staff Salary', date: '6/5/2026', txnType: 'Credit', amount: 30000, positive: false },
   { id: 4, customer: 'Initial Investment for May', type: 'Investment', date: '6/5/2026', txnType: 'Debit', amount: 500000, positive: true },
-  { id: 5, customer: 'Ravi Fernando', type: 'Loan Repayment', date: '3/15/2026', txnType: 'Debit', amount: 30000, positive: true },
-  { id: 6, customer: 'Ravi Fernando', type: 'Loan Repayment', date: '3/15/2026', txnType: 'Debit', amount: 5000, positive: true },
-  { id: 7, customer: 'Ravi Fernando', type: 'Loan Repayment', date: '10/17/2024', txnType: 'Debit', amount: 5000, positive: true },
-  { id: 8, customer: 'Ravi Fernando', type: 'Loan Disbursement', date: '4/15/2024', txnType: 'Credit', amount: 10000, positive: false },
+  { id: 5, customer: 'Shanilka Madhwa', type: 'Loan Repayment', date: '3/15/2026', txnType: 'Debit', amount: 30000, positive: true },
+  { id: 6, customer: 'Shanilka Madhwa', type: 'Loan Repayment', date: '3/15/2026', txnType: 'Debit', amount: 5000, positive: true },
+  { id: 7, customer: 'Shanilka Madhwa', type: 'Loan Repayment', date: '10/17/2024', txnType: 'Debit', amount: 5000, positive: true },
+  { id: 8, customer: 'Shanilka Madhwa', type: 'Loan Disbursement', date: '4/15/2024', txnType: 'Credit', amount: 10000, positive: false },
 ]
 
 export const transactions = [
-  { id: 1, date: '6/5/2026', time: '12:52 PM', title: 'Loan Repayment', description: 'Loan repayment - ECL-2026-06-0', customer: 'Dmp Dissanayake C', user: 'chamika92', category: 'Loan Payment', amount: 2000, positive: true },
-  { id: 2, date: '6/5/2026', time: '12:52 PM', title: 'Loan Disbursement', description: 'Loan approved and released - ECL', customer: 'Dmp Dissanayake C', user: 'chamika92', category: 'Loan Disbursement', amount: 10000, positive: false },
-  { id: 3, date: '6/5/2026', time: '12:51 PM', title: 'Intern Salary', description: 'No description', customer: '-', user: 'chamika92', category: 'Staff Salary', amount: 30000, positive: false },
-  { id: 4, date: '6/5/2026', time: '12:50 PM', title: 'Initial Investment for May', description: 'No description', customer: '-', user: 'chamika92', category: 'Investment Income', amount: 500000, positive: true },
+  { id: 1, date: '6/5/2026', time: '12:52 PM', title: 'Loan Repayment', description: 'Loan repayment - ECL-2026-06-0', customer: 'Sethmi Didulani', user: 'Sethmi Didulani', category: 'Loan Payment', amount: 2000, positive: true },
+  { id: 2, date: '6/5/2026', time: '12:52 PM', title: 'Loan Disbursement', description: 'Loan approved and released - ECL', customer: 'Sethmi Didulani', user: 'Sethmi Didulani', category: 'Loan Disbursement', amount: 10000, positive: false },
+  { id: 3, date: '6/5/2026', time: '12:51 PM', title: 'Intern Salary', description: 'No description', customer: 'Sethmi Didulani', user: 'Sethmi Didulani', category: 'Staff Salary', amount: 30000, positive: false },
+  { id: 4, date: '6/5/2026', time: '12:50 PM', title: 'Initial Investment for May', description: 'No description', customer: 'Sethmi Didulani', user: 'Sethmi Didulani', category: 'Investment Income', amount: 500000, positive: true },
 ]
 
 export const microLoans = [
-  { id: 'ECL-2026-06-00001', date: '2026-06-05', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 10000, total: 12000, paid: 2000, balance: 11000, installments: '1/10', status: 'ACTIVE' },
-  { id: 'ECL-2026-05-00006', date: '2026-05-05', customer: 'Ravi Fernando', phone: '+94712345678', principal: 10000, total: 11500, paid: 0, balance: 11500, installments: '0/14', status: 'OVERDUE' },
-  { id: 'ECL-2026-05-00005', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
-  { id: 'ECL-2026-05-00004', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
-  { id: 'ECL-2026-05-00003', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
-  { id: 'ECL-2026-05-00002', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5500, paid: 5500, balance: 0, installments: '5/5', status: 'CLOSED' },
-  { id: 'ECL-2026-05-00001', date: '2026-05-01', customer: 'Ravi Fernando', phone: '+94712345678', principal: 10000, total: 13000, paid: 3000, balance: 10000, installments: '1/6', status: 'ACTIVE' },
+  { id: 'ECL-2026-06-00001', date: '2026-06-05', customer: 'Sethmi Didulani', phone: '+94786611863', principal: 10000, total: 12000, paid: 2000, balance: 11000, installments: '1/10', status: 'ACTIVE' },
+  { id: 'ECL-2026-05-00006', date: '2026-05-05', customer: 'Sethmi Didulani', phone: '+94712345678', principal: 10000, total: 11500, paid: 0, balance: 11500, installments: '0/14', status: 'OVERDUE' },
+  { id: 'ECL-2026-05-00005', date: '2026-05-15', customer: 'Sethmi Didulani', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00004', date: '2026-05-15', customer: 'Sethmi Didulani', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00003', date: '2026-05-15', customer: 'Sethmi Didulani', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00002', date: '2026-05-15', customer: 'Sethmi Didulani', phone: '+94786611863', principal: 5000, total: 5500, paid: 5500, balance: 0, installments: '5/5', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00001', date: '2026-05-01', customer: 'Sethmi Didulani', phone: '+94712345678', principal: 10000, total: 13000, paid: 3000, balance: 10000, installments: '1/6', status: 'ACTIVE' },
 ]
 
 export const customers = [

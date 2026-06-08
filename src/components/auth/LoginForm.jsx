@@ -52,10 +52,15 @@ export default function LoginForm() {
 
       <button
         type="submit"
-        className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition"
+        className="w-full bg-indigo-700 text-white py-3 rounded-xl hover:bg-indigo-800 transition"
       >
-        Login
+        Login In
       </button>
+
+      <div className="flex items-center justify-between mt-2 text-sm">
+        <button type="button" className="text-gray-500 underline">Forgot password?</button>
+        <span className="text-gray-400">Need an account? <button className="text-indigo-600 underline">Sign up</button></span>
+      </div>
 
     </form>
   );

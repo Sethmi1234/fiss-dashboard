@@ -4,7 +4,7 @@ export default function Header() {
       <div />
       <div className="flex items-center gap-3">
         <div className="text-right">
-          <p className="text-sm font-semibold text-gray-800">Lahiru Chamilka</p>
+          <p className="text-sm font-semibold text-gray-800">Sethmi Didulani</p>
           <p className="text-xs text-gray-400">Admin</p>
         </div>
         <div className="w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center text-sm font-bold text-white">

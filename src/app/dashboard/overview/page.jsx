@@ -6,7 +6,7 @@ import { statsData, recentTransactions } from '@/lib/data'
 export default function OverviewPage() {
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-800">Overview</h1>
+      <h1 className="text-4xl font-bold text-gray-800">Overview</h1>
       <p className="text-gray-400 text-sm mb-6">Welcome back. Here's what's happening with your accounts today.</p>
 
       <StatsCards stats={statsData} />
