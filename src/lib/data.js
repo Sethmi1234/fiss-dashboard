@@ -1,26 +1,62 @@
-export const loans = [
-  {
-    id: "ECL-2026-00001",
-    customer: "John Doe",
-    amount: "Rs. 10,000",
-    paid: "Rs. 2,000",
-    balance: "Rs. 8,000",
-    status: "Active",
-  },
-  {
-    id: "ECL-2026-00002",
-    customer: "Jane Smith",
-    amount: "Rs. 20,000",
-    paid: "Rs. 5,000",
-    balance: "Rs. 15,000",
-    status: "Overdue",
-  },
-  {
-    id: "ECL-2026-00003",
-    customer: "David Silva",
-    amount: "Rs. 15,000",
-    paid: "Rs. 15,000",
-    balance: "Rs. 0",
-    status: "Closed",
-  },
-];
+export const statsData = {
+  totalIncome: 502000,
+  customers: 3,
+  employees: 2,
+  totalExpenses: 40000,
+  incomeChange: 11.07,
+  customersChange: 100,
+  employeesChange: 100,
+  expensesChange: 70.33,
+}
+
+export const recentTransactions = [
+  { id: 1, customer: 'Dmp Dissanayake C', type: 'Loan Repayment', date: '6/5/2026', txnType: 'Debit', amount: 2000, positive: true },
+  { id: 2, customer: 'Dmp Dissanayake C', type: 'Loan Disbursement', date: '6/5/2026', txnType: 'Credit', amount: 10000, positive: false },
+  { id: 3, customer: 'Intern Salary', type: 'Staff Salary', date: '6/5/2026', txnType: 'Credit', amount: 30000, positive: false },
+  { id: 4, customer: 'Initial Investment for May', type: 'Investment', date: '6/5/2026', txnType: 'Debit', amount: 500000, positive: true },
+  { id: 5, customer: 'Ravi Fernando', type: 'Loan Repayment', date: '3/15/2026', txnType: 'Debit', amount: 30000, positive: true },
+  { id: 6, customer: 'Ravi Fernando', type: 'Loan Repayment', date: '3/15/2026', txnType: 'Debit', amount: 5000, positive: true },
+  { id: 7, customer: 'Ravi Fernando', type: 'Loan Repayment', date: '10/17/2024', txnType: 'Debit', amount: 5000, positive: true },
+  { id: 8, customer: 'Ravi Fernando', type: 'Loan Disbursement', date: '4/15/2024', txnType: 'Credit', amount: 10000, positive: false },
+]
+
+export const transactions = [
+  { id: 1, date: '6/5/2026', time: '12:52 PM', title: 'Loan Repayment', description: 'Loan repayment - ECL-2026-06-0', customer: 'Dmp Dissanayake C', user: 'chamika92', category: 'Loan Payment', amount: 2000, positive: true },
+  { id: 2, date: '6/5/2026', time: '12:52 PM', title: 'Loan Disbursement', description: 'Loan approved and released - ECL', customer: 'Dmp Dissanayake C', user: 'chamika92', category: 'Loan Disbursement', amount: 10000, positive: false },
+  { id: 3, date: '6/5/2026', time: '12:51 PM', title: 'Intern Salary', description: 'No description', customer: '-', user: 'chamika92', category: 'Staff Salary', amount: 30000, positive: false },
+  { id: 4, date: '6/5/2026', time: '12:50 PM', title: 'Initial Investment for May', description: 'No description', customer: '-', user: 'chamika92', category: 'Investment Income', amount: 500000, positive: true },
+]
+
+export const microLoans = [
+  { id: 'ECL-2026-06-00001', date: '2026-06-05', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 10000, total: 12000, paid: 2000, balance: 11000, installments: '1/10', status: 'ACTIVE' },
+  { id: 'ECL-2026-05-00006', date: '2026-05-05', customer: 'Ravi Fernando', phone: '+94712345678', principal: 10000, total: 11500, paid: 0, balance: 11500, installments: '0/14', status: 'OVERDUE' },
+  { id: 'ECL-2026-05-00005', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00004', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00003', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5750, paid: 0, balance: 5750, installments: '0/7', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00002', date: '2026-05-15', customer: 'Dmp Dissanayake C', phone: '+94786611863', principal: 5000, total: 5500, paid: 5500, balance: 0, installments: '5/5', status: 'CLOSED' },
+  { id: 'ECL-2026-05-00001', date: '2026-05-01', customer: 'Ravi Fernando', phone: '+94712345678', principal: 10000, total: 13000, paid: 3000, balance: 10000, installments: '1/6', status: 'ACTIVE' },
+]
+
+export const customers = [
+  { id: 'C-001', name: 'Dmp Dissanayake C', phone: '+94786611863', email: 'dmp@email.com', loans: 5, status: 'Active' },
+  { id: 'C-002', name: 'Ravi Fernando', phone: '+94712345678', email: 'ravi@email.com', loans: 2, status: 'Active' },
+  { id: 'C-003', name: 'Kamal Perera', phone: '+94771234567', email: 'kamal@email.com', loans: 1, status: 'Inactive' },
+]
+
+export const employees = [
+  { id: 'E-001', name: 'Sethmi Didulani', role: 'Admin', email: 'seth@finexa.com', phone: '+94701234567', status: 'Active' },
+  { id: 'E-002', name: 'Nimal Silva', role: 'Loan Officer', email: 'nimal@finexa.com', phone: '+94709876543', status: 'Active' },
+]
+
+export const tasks = [
+  { id: 1, title: 'Review overdue loans', priority: 'High', due: '2026-06-10', status: 'Pending', assignee: 'Sethmi Didulani' },
+  { id: 2, title: 'Call Ravi Fernando', priority: 'High', due: '2026-06-08', status: 'Pending', assignee: 'Nimal Silva' },
+  { id: 3, title: 'Monthly report preparation', priority: 'Medium', due: '2026-06-30', status: 'In Progress', assignee: 'Sethmi Didulani' },
+  { id: 4, title: 'Update customer records', priority: 'Low', due: '2026-06-15', status: 'Completed', assignee: 'Nimal Silva' },
+]
+
+export const premiumLoans = [
+  { id: 'PCL-2026-06-00001', date: '2026-06-01', customer: 'High Value Co', phone: '+94770000001', principal: 500000, total: 550000, paid: 50000, balance: 500000, installments: '1/12', status: 'ACTIVE' },
+  { id: 'PCL-2026-05-00002', date: '2026-05-15', customer: 'Enterprise Ltd', phone: '+94770000002', principal: 250000, total: 275000, paid: 275000, balance: 0, installments: '12/12', status: 'CLOSED' },
+  { id: 'PCL-2026-04-00003', date: '2026-04-20', customer: 'Startup Inc', phone: '+94770000003', principal: 150000, total: 165000, paid: 50000, balance: 115000, installments: '4/10', status: 'ACTIVE' },
+]
