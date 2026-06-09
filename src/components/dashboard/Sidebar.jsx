@@ -22,7 +22,7 @@ const navItems = [
   { label: 'Employees', href: '/dashboard/employees', icon: UserCheck },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ onClose }) {
   const pathname = usePathname()
   const router = useRouter()
 
@@ -55,6 +55,7 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition
                 ${isActive
                   ? 'bg-green-100 text-green-700'

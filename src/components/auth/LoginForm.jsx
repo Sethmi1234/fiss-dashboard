@@ -57,7 +57,7 @@ export default function LoginForm() {
         Login In
       </button>
 
-      <div className="flex items-center justify-between mt-2 text-sm">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mt-2 text-sm">
         <button type="button" className="text-gray-500 underline">Forgot password?</button>
         <span className="text-gray-400">Need an account? <button className="text-indigo-600 underline">Sign up</button></span>
       </div>

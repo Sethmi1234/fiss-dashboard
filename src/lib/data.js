@@ -56,7 +56,7 @@ export const tasks = [
 ]
 
 export const premiumLoans = [
-  { id: 'PCL-2026-06-00001', date: '2026-06-01', customer: 'High Value Co', phone: '+94770000001', principal: 500000, total: 550000, paid: 50000, balance: 500000, installments: '1/12', status: 'ACTIVE' },
-  { id: 'PCL-2026-05-00002', date: '2026-05-15', customer: 'Enterprise Ltd', phone: '+94770000002', principal: 250000, total: 275000, paid: 275000, balance: 0, installments: '12/12', status: 'CLOSED' },
-  { id: 'PCL-2026-04-00003', date: '2026-04-20', customer: 'Startup Inc', phone: '+94770000003', principal: 150000, total: 165000, paid: 50000, balance: 115000, installments: '4/10', status: 'ACTIVE' },
+  { id: 'PCL-2026-06-00001', date: '2026-06-01', customer: 'High Value Co', phone: '+94770000001', principal: 500000, total: 600000, paid: 50000, balance: 550000, installments: '1/12', status: 'ACTIVE' },
+  { id: 'PCL-2026-05-00002', date: '2026-05-15', customer: 'Enterprise Ltd', phone: '+94770000002', principal: 250000, total: 300000, paid: 0, balance: 300000, installments: '0/12', status: 'OVERDUE' },
+  { id: 'PCL-2026-04-00003', date: '2026-04-20', customer: 'Startup Inc', phone: '+94770000003', principal: 150000, total: 180000, paid: 180000, balance: 0, installments: '12/12', status: 'CLOSED' },
 ]

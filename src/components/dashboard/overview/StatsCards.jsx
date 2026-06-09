@@ -35,17 +35,18 @@ export default function StatsCards({ stats }) {
   ]
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    // Mobile: 1 column, Tablet: 2 columns, Desktop: 4 columns
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
       {cards.map((card) => (
         <div
           key={card.title}
-          className={`bg-white rounded-xl border border-gray-100 p-4 shadow-sm transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:shadow-xl cursor-pointer ${card.border}`}
+          className={`bg-white rounded-xl border border-gray-100 p-4 shadow-sm ${card.border}`}
         >
           <div className="flex items-center justify-between mb-2">
             <p className="text-xs text-gray-500">{card.title}</p>
             <span className="text-xl">{card.icon}</span>
           </div>
-          <p className="text-xl font-bold text-gray-800">{card.value}</p>
+          <p className="text-lg md:text-xl font-bold text-gray-800">{card.value}</p>
           <p className={`text-xs mt-1 ${card.positive ? 'text-green-500' : 'text-red-500'}`}>
             {card.positive ? '▲' : '▼'} {card.change}% from last month
           </p>
