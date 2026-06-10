@@ -1,14 +1,15 @@
 # FISS Dashboard
 
-A modern banking dashboard built with Next.js 16 and Tailwind CSS 4. This project includes a login page, nested dashboard routes, overview cards, transactions, customer and employee pages, and loan management screens.
+A modern banking dashboard built with Next.js 16 and Tailwind CSS 4. This project includes a responsive login page, nested dashboard routes, overview cards, transactions, reports, ledgers, customer and employee pages, and loan management screens.
 
 ## Features
 
 - Next.js App Router project structure
 - Responsive dashboard layout with sidebar navigation
-- Login page with a split marketing and form layout
+- Login page with a split marketing and form layout that stacks on mobile
 - Overview cards with hover interactions
-- Transactions table and micro/premium loan pages
+- Transactions table, reports, and ledgers pages
+- Micro/premium loan pages
 - Customer and employee data pages
 - Tailwind CSS styling
 
@@ -74,6 +75,8 @@ To change sidebar items or routes, update:
 
 - `src/components/dashboard/Sidebar.jsx`
 - `src/app/dashboard/layout.jsx`
+- `src/app/dashboard/reports/page.jsx`
+- `src/app/dashboard/ledgers/page.jsx`
 
 To update dashboard content or card values, edit:
 
