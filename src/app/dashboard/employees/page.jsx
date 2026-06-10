@@ -1,6 +1,12 @@
+'use client'
+
+import { useState } from 'react'
 import { employees } from '@/lib/data'
+import NewEmployeeModal from '@/components/dashboard/employees/NewEmployeeModel'
 
 export default function EmployeesPage() {
+  const [showModal, setShowModal] = useState(false)
+
   return (
     <div>
       <div className="flex items-start justify-between mb-6 gap-4">
@@ -8,14 +14,17 @@ export default function EmployeesPage() {
           <h1 className="text-xl md:text-2xl font-bold text-gray-800">Employees</h1>
           <p className="text-gray-400 text-sm mt-1">Manage all staff members.</p>
         </div>
-        <button className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition">
+        <button
+          onClick={() => setShowModal(true)}
+          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition"
+        >
           + New Employee
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+      {showModal && <NewEmployeeModal onClose={() => setShowModal(false)} />}
 
-        {/* Mobile - cards */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100">
         <div className="md:hidden divide-y divide-gray-100">
           {employees.map((e) => (
             <div key={e.id} className="p-4 flex flex-col gap-1">
@@ -32,8 +41,6 @@ export default function EmployeesPage() {
             </div>
           ))}
         </div>
-
-        {/* Desktop - table */}
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="bg-gray-50 text-gray-500 uppercase text-xs">
@@ -64,7 +71,6 @@ export default function EmployeesPage() {
             </tbody>
           </table>
         </div>
-
         <div className="px-4 py-3 text-xs text-gray-400 border-t border-gray-100">
           Showing {employees.length} results
         </div>

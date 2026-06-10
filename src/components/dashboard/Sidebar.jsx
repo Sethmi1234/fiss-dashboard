@@ -10,6 +10,8 @@ import {
   Star,
   Users,
   UserCheck,
+  FileText,
+  BookOpen,
   LogOut
 } from 'lucide-react'
 
@@ -20,6 +22,8 @@ const navItems = [
   { label: 'Premium Loans', href: '/dashboard/premium-loans', icon: Star },
   { label: 'Customers', href: '/dashboard/customers', icon: Users },
   { label: 'Employees', href: '/dashboard/employees', icon: UserCheck },
+  { label: 'Reports', href: '/dashboard/reports', icon: FileText },
+  { label: 'Ledgers', href: '/dashboard/ledgers', icon: BookOpen },
 ]
 
 export default function Sidebar({ onClose }) {
@@ -73,7 +77,7 @@ export default function Sidebar({ onClose }) {
       <div className="mt-auto px-2">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium bg-red-500 text-white hover:bg-red-600 transition"
+          className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium bg-blue-900 text-white hover:bg-red-600 transition"
         >
           <LogOut size={18} />
           Logout

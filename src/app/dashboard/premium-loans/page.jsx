@@ -1,4 +1,8 @@
+'use client'
+
+import { useState } from 'react'
 import { premiumLoans } from '@/lib/data'
+import NewPremiumLoanModal from '@/components/dashboard/loans/NewPremiumLoanModal'
 
 const statusStyles = {
   ACTIVE: 'bg-green-100 text-green-700',
@@ -7,6 +11,8 @@ const statusStyles = {
 }
 
 export default function PremiumLoansPage() {
+  const [showModal, setShowModal] = useState(false)
+
   return (
     <div>
       <div className="flex items-start justify-between mb-6 gap-4">
@@ -14,14 +20,19 @@ export default function PremiumLoansPage() {
           <h1 className="text-xl md:text-2xl font-bold text-gray-800">Premium Loans</h1>
           <p className="text-gray-400 text-sm mt-1">Manage premium loan products and repayments.</p>
         </div>
-        <button className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition">
+        <button
+          onClick={() => setShowModal(true)}
+          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition"
+        >
           + New Premium Loan
         </button>
       </div>
 
+      {showModal && <NewPremiumLoanModal onClose={() => setShowModal(false)} />}
+
       <div className="bg-white rounded-xl shadow-sm border border-gray-100">
 
-        {/* Mobile - cards */}
+        {/* Mobile cards */}
         <div className="md:hidden divide-y divide-gray-100">
           {premiumLoans.map((loan) => (
             <div key={loan.id} className="p-4 flex flex-col gap-2">
@@ -50,7 +61,7 @@ export default function PremiumLoansPage() {
           ))}
         </div>
 
-        {/* Desktop - table */}
+        {/* Desktop table */}
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="bg-gray-50 text-gray-500 uppercase text-xs">

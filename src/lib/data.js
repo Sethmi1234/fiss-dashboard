@@ -60,3 +60,22 @@ export const premiumLoans = [
   { id: 'PCL-2026-05-00002', date: '2026-05-15', customer: 'Enterprise Ltd', phone: '+94770000002', principal: 250000, total: 300000, paid: 0, balance: 300000, installments: '0/12', status: 'OVERDUE' },
   { id: 'PCL-2026-04-00003', date: '2026-04-20', customer: 'Startup Inc', phone: '+94770000003', principal: 150000, total: 180000, paid: 180000, balance: 0, installments: '12/12', status: 'CLOSED' },
 ]
+
+export const reports = [
+  { id: 'RPT-001', title: 'Monthly Collection Report', type: 'Collection', generatedDate: '2026-06-01', period: 'May 2026', status: 'Ready', generatedBy: 'Sethmi Didulani' },
+  { id: 'RPT-002', title: 'Overdue Loan Report', type: 'Overdue', generatedDate: '2026-06-01', period: 'May 2026', status: 'Ready', generatedBy: 'Sethmi Didulani' },
+  { id: 'RPT-003', title: 'Monthly Income Report', type: 'Income', generatedDate: '2026-05-01', period: 'April 2026', status: 'Ready', generatedBy: 'Sethmi Didulani' },
+  { id: 'RPT-004', title: 'Loan Disbursement Report', type: 'Disbursement', generatedDate: '2026-05-01', period: 'April 2026', status: 'Ready', generatedBy: 'Sethmi Didulani' },
+  { id: 'RPT-005', title: 'Customer Summary Report', type: 'Customer', generatedDate: '2026-04-01', period: 'March 2026', status: 'Ready', generatedBy: 'Sethmi Didulani' },
+]
+
+export const ledgers = [
+  { id: 'LDG-001', date: '2026-06-05', description: 'Loan Repayment - ECL-2026-06-00001', type: 'Credit', debit: 0, credit: 2000, balance: 502000, category: 'Loan Payment' },
+  { id: 'LDG-002', date: '2026-06-05', description: 'Loan Disbursement - ECL-2026-06-00001', type: 'Debit', debit: 10000, credit: 0, balance: 492000, category: 'Loan Disbursement' },
+  { id: 'LDG-003', date: '2026-06-05', description: 'Intern Salary Payment', type: 'Debit', debit: 30000, credit: 0, balance: 462000, category: 'Staff Salary' },
+  { id: 'LDG-004', date: '2026-06-05', description: 'Initial Investment for May', type: 'Credit', debit: 0, credit: 500000, balance: 962000, category: 'Investment' },
+  { id: 'LDG-005', date: '2026-05-15', description: 'Loan Repayment - ECL-2026-05-00001', type: 'Credit', debit: 0, credit: 5000, balance: 957000, category: 'Loan Payment' },
+  { id: 'LDG-006', date: '2026-05-15', description: 'Office Rent Payment', type: 'Debit', debit: 15000, credit: 0, balance: 942000, category: 'Expense' },
+  { id: 'LDG-007', date: '2026-05-01', description: 'Loan Disbursement - PCL-2026-05-00002', type: 'Debit', debit: 250000, credit: 0, balance: 692000, category: 'Loan Disbursement' },
+  { id: 'LDG-008', date: '2026-04-20', description: 'Loan Disbursement - PCL-2026-04-00003', type: 'Debit', debit: 150000, credit: 0, balance: 542000, category: 'Loan Disbursement' },
+]
