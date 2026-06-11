@@ -1,14 +1,22 @@
-import "./globals.css";
+import { Inter } from 'next/font/google'
+import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
 
 export const metadata = {
-  title: "FISS Dashboard",
-  description: "Micro Loan Dashboard",
-};
+  title: 'Finexa Dashboard',
+  description: 'Banking Management Platform',
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={inter.variable}>
+        {children}
+      </body>
     </html>
-  );
+  )
 }
