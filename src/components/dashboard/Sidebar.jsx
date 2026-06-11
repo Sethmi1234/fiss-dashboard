@@ -60,7 +60,8 @@ export default function Sidebar({ onClose }) {
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition
+              className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium
+                transition-all duration-200 hover:scale-[1.02] active:scale-95
                 ${isActive
                   ? 'bg-green-100 text-green-700'
                   : 'text-gray-600 hover:bg-gray-100'
@@ -77,7 +78,7 @@ export default function Sidebar({ onClose }) {
       <div className="mt-auto px-2">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium bg-blue-900 text-white hover:bg-red-600 transition"
+          className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium bg-blue-900 text-white hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] active:scale-95"
         >
           <LogOut size={18} />
           Logout

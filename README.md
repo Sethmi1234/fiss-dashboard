@@ -1,17 +1,30 @@
 # FISS Dashboard
 
-A modern banking dashboard built with Next.js 16 and Tailwind CSS 4. This project includes a responsive login page, nested dashboard routes, overview cards, transactions, reports, ledgers, customer and employee pages, and loan management screens.
+A modern banking dashboard built with Next.js 16 and Tailwind CSS 4. It includes a responsive login experience, a shared dashboard shell with sidebar navigation, and separate pages for overview, transactions, reports, ledgers, customers, employees, and loan management.
 
 ## Features
 
 - Next.js App Router project structure
 - Responsive dashboard layout with sidebar navigation
 - Login page with a split marketing and form layout that stacks on mobile
-- Overview cards with hover interactions
-- Transactions table, reports, and ledgers pages
-- Micro/premium loan pages
-- Customer and employee data pages
+- Overview cards with hover interactions and quick actions
+- Transactions table with search and filters
+- Reports and ledgers pages for financial tracking
+- Micro/premium loan pages with tabular record views
+- Customer and employee data pages with add-item modals
 - Tailwind CSS styling
+
+## Included Pages
+
+- `/login` — responsive sign-in page with marketing panel and form
+- `/dashboard/overview` — summary cards, actions, and recent transactions
+- `/dashboard/transactions` — searchable transaction list with a create modal
+- `/dashboard/reports` — report listing and filtering
+- `/dashboard/ledgers` — ledger entries and account totals
+- `/dashboard/customers` — customer list with a new-customer modal
+- `/dashboard/employees` — employee list with a new-employee modal
+- `/dashboard/micro-loans` — loan records for smaller loans
+- `/dashboard/premium-loans` — loan records for larger loans
 
 ## Project Structure
 
@@ -67,7 +80,9 @@ npm run start
 
 - The dashboard uses client-side navigation with `next/link`.
 - The login page currently redirects to `/dashboard` after submitting the form.
-- Data is provided from `src/lib/data.js` for demo purposes.
+- Data is provided from `src/lib/data.js` for demo purposes and powers the tables/cards across the app.
+- Several pages use modal forms for creating records, but they are currently demo-only and do not persist to a database.
+- The layout is designed to stay usable on mobile screens by collapsing the main dashboard content into stacked sections.
 
 ## Customization
 

@@ -1,11 +1,27 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 const statusStyles = {
   ACTIVE: 'bg-green-100 text-green-700',
   OVERDUE: 'bg-red-100 text-red-600',
   CLOSED: 'bg-gray-200 text-gray-500',
+}
+
+// Animation variants
+const tableVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const rowVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: { opacity: 1, x: 0 },
 }
 
 export default function LoansTable({ loans }) {
@@ -46,13 +62,22 @@ export default function LoansTable({ loans }) {
         </div>
       </div>
 
-      {/* Mobile - cards */}
-      <div className="md:hidden divide-y divide-gray-100">
+      {/* Mobile cards */}
+      <motion.div
+        className="md:hidden divide-y divide-gray-100"
+        variants={tableVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {filtered.length === 0 ? (
           <p className="text-center text-gray-400 text-sm py-8">No loans found.</p>
         ) : (
           filtered.map((loan) => (
-            <div key={loan.id} className="p-4 flex flex-col gap-2">
+            <motion.div
+              key={loan.id}
+              variants={rowVariants}
+              className="p-4 flex flex-col gap-2"
+            >
               <div className="flex items-start justify-between">
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">{loan.id}</p>
@@ -87,12 +112,12 @@ export default function LoansTable({ loans }) {
                 </div>
               </div>
               <p className="text-xs text-gray-400">{loan.installments} installments</p>
-            </div>
+            </motion.div>
           ))
         )}
-      </div>
+      </motion.div>
 
-      {/* Desktop - table */}
+      {/* Desktop table */}
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-gray-50 text-gray-500 uppercase text-xs">
@@ -105,14 +130,22 @@ export default function LoansTable({ loans }) {
               <th className="px-4 py-3 text-left">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <motion.tbody
+            variants={tableVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {filtered.length === 0 ? (
               <tr>
                 <td colSpan={6} className="text-center text-gray-400 py-8">No loans found.</td>
               </tr>
             ) : (
               filtered.map((loan) => (
-                <tr key={loan.id} className="border-t border-gray-100 hover:bg-gray-50">
+                <motion.tr
+                  key={loan.id}
+                  variants={rowVariants}
+                  className="border-t border-gray-100 hover:bg-gray-50"
+                >
                   <td className="px-4 py-3">
                     <p className="font-semibold text-gray-800">{loan.id}</p>
                     <p className="text-gray-400 text-xs">{loan.date}</p>
@@ -136,10 +169,10 @@ export default function LoansTable({ loans }) {
                     </span>
                   </td>
                   <td className="px-4 py-3 text-gray-400 text-lg cursor-pointer hover:text-gray-600">⋯</td>
-                </tr>
+                </motion.tr>
               ))
             )}
-          </tbody>
+          </motion.tbody>
         </table>
       </div>
 

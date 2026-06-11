@@ -1,8 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { premiumLoans } from '@/lib/data'
 import NewPremiumLoanModal from '@/components/dashboard/loans/NewPremiumLoanModal'
+
+const tableVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const rowVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: { opacity: 1, x: 0 },
+}
 
 const statusStyles = {
   ACTIVE: 'bg-green-100 text-green-700',
@@ -22,7 +37,7 @@ export default function PremiumLoansPage() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition"
+          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-95"
         >
           + New Premium Loan
         </button>
@@ -33,9 +48,14 @@ export default function PremiumLoansPage() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100">
 
         {/* Mobile cards */}
-        <div className="md:hidden divide-y divide-gray-100">
+        <motion.div
+          className="md:hidden divide-y divide-gray-100"
+          variants={tableVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {premiumLoans.map((loan) => (
-            <div key={loan.id} className="p-4 flex flex-col gap-2">
+            <motion.div key={loan.id} variants={rowVariants} className="p-4 flex flex-col gap-2">
               <div className="flex items-start justify-between">
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">{loan.id}</p>
@@ -57,9 +77,9 @@ export default function PremiumLoansPage() {
                   <p className="text-sm font-semibold text-red-500">Rs. {loan.balance.toLocaleString()}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Desktop table */}
         <div className="hidden md:block overflow-x-auto">
@@ -74,9 +94,9 @@ export default function PremiumLoansPage() {
                 <th className="px-4 py-3 text-left">Actions</th>
               </tr>
             </thead>
-            <tbody>
+            <motion.tbody variants={tableVariants} initial="hidden" animate="visible">
               {premiumLoans.map((loan) => (
-                <tr key={loan.id} className="border-t border-gray-100 hover:bg-gray-50">
+                <motion.tr key={loan.id} variants={rowVariants} className="border-t border-gray-100 hover:bg-gray-50">
                   <td className="px-4 py-3">
                     <p className="font-semibold text-gray-800">{loan.id}</p>
                     <p className="text-gray-400 text-xs">{loan.date}</p>
@@ -100,9 +120,9 @@ export default function PremiumLoansPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3 text-gray-400 text-lg cursor-pointer hover:text-gray-600">⋯</td>
-                </tr>
+                </motion.tr>
               ))}
-            </tbody>
+            </motion.tbody>
           </table>
         </div>
 

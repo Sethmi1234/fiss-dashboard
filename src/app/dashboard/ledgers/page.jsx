@@ -1,8 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { ledgers } from '@/lib/data'
 import NewLedgerModal from '@/components/dashboard/ledgers/NewLedgerModal'
+
+const tableVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const rowVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: { opacity: 1, x: 0 },
+}
 
 export default function LedgersPage() {
   const [showModal, setShowModal] = useState(false)
@@ -26,7 +41,7 @@ export default function LedgersPage() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="shrink-0 bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-600 transition"
+          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-95"
         >
           + New Entry
         </button>
@@ -66,12 +81,17 @@ export default function LedgersPage() {
         </div>
 
         {/* Mobile cards */}
-        <div className="md:hidden divide-y divide-gray-100">
+        <motion.div
+          className="md:hidden divide-y divide-gray-100"
+          variants={tableVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {filtered.length === 0 ? (
             <p className="text-center text-gray-400 text-sm py-8">No entries found.</p>
           ) : (
             filtered.map((l) => (
-              <div key={l.id} className="p-4 flex flex-col gap-1">
+              <motion.div key={l.id} variants={rowVariants} className="p-4 flex flex-col gap-1">
                 <div className="flex items-start justify-between">
                   <p className="font-semibold text-gray-800 text-sm">{l.description}</p>
                   <span className={`px-2 py-1 rounded-full text-xs font-semibold shrink-0 ml-2
@@ -95,10 +115,10 @@ export default function LedgersPage() {
                     <p className="text-sm font-semibold text-blue-600">Rs. {l.balance.toLocaleString()}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))
           )}
-        </div>
+        </motion.div>
 
         {/* Desktop table */}
         <div className="hidden md:block overflow-x-auto">
@@ -115,7 +135,7 @@ export default function LedgersPage() {
                 <th className="px-4 py-3 text-right">Balance</th>
               </tr>
             </thead>
-            <tbody>
+            <motion.tbody variants={tableVariants} initial="hidden" animate="visible">
               {filtered.length === 0 ? (
                 <tr>
                   <td colSpan={8} className="text-center text-gray-400 py-8">
@@ -124,7 +144,7 @@ export default function LedgersPage() {
                 </tr>
               ) : (
                 filtered.map((l) => (
-                  <tr key={l.id} className="border-t border-gray-100 hover:bg-gray-50">
+                  <motion.tr key={l.id} variants={rowVariants} className="border-t border-gray-100 hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-500">{l.id}</td>
                     <td className="px-4 py-3 text-gray-600">{l.date}</td>
                     <td className="px-4 py-3 font-medium text-gray-800">{l.description}</td>
@@ -148,10 +168,10 @@ export default function LedgersPage() {
                     <td className="px-4 py-3 text-right text-blue-600 font-medium">
                       Rs. {l.balance.toLocaleString()}
                     </td>
-                  </tr>
+                  </motion.tr>
                 ))
               )}
-            </tbody>
+            </motion.tbody>
           </table>
         </div>
 

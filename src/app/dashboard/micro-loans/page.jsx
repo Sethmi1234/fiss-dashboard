@@ -17,7 +17,7 @@ export default function MicroLoansPage() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition"
+          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-95"
         >
           + New Loan
         </button>

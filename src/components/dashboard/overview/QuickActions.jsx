@@ -22,7 +22,9 @@ export default function QuickActions() {
           <Link
             key={action.label}
             href={action.href}
-            className={`flex flex-col items-center justify-center gap-1 p-3 rounded-lg border transition text-center hover:opacity-80 ${action.bg}`}
+            className={`flex flex-col items-center justify-center gap-1 p-3 rounded-lg border
+  transition-all duration-200 hover:scale-[1.02] active:scale-95
+  text-center ${action.bg}`}
           >
             <span className={`text-xl ${action.color}`}>{action.icon}</span>
             <span className="text-xs text-gray-600 font-medium leading-tight">{action.label}</span>
