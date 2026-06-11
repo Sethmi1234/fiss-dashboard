@@ -3,6 +3,10 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Checkbox } from '@/components/ui/checkbox'
 
 export default function LoginForm() {
   const router = useRouter()
@@ -13,14 +17,9 @@ export default function LoginForm() {
 
   const validate = () => {
     const newErrors = {}
-    if (!username.trim()) {
-      newErrors.username = 'Username is required'
-    }
-    if (!password.trim()) {
-      newErrors.password = 'Password is required'
-    } else if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters'
-    }
+    if (!username.trim()) newErrors.username = 'Username is required'
+    if (!password.trim()) newErrors.password = 'Password is required'
+    else if (password.length < 6) newErrors.password = 'Password must be at least 6 characters'
     return newErrors
   }
 
@@ -38,11 +37,9 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleLogin} className="space-y-5">
 
-      <div>
-        <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-700">
-          Username
-        </label>
-        <input
+      <div className="space-y-1.5">
+        <Label htmlFor="username">Username</Label>
+        <Input
           id="username"
           name="username"
           type="text"
@@ -52,20 +49,17 @@ export default function LoginForm() {
             setUsername(e.target.value)
             if (errors.username) setErrors({ ...errors, username: '' })
           }}
-          className={`w-full border p-3 rounded-xl outline-none focus:ring-2 focus:ring-green-500 text-sm
-            ${errors.username ? 'border-red-400 bg-red-50' : 'border-gray-300'}`}
+          className={errors.username ? 'border-destructive' : ''}
         />
         {errors.username && (
-          <p className="text-red-500 text-xs mt-1">{errors.username}</p>
+          <p className="text-destructive text-xs">{errors.username}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-700">
-          Password
-        </label>
+      <div className="space-y-1.5">
+        <Label htmlFor="password">Password</Label>
         <div className="relative">
-          <input
+          <Input
             id="password"
             name="password"
             type={showPassword ? 'text' : 'password'}
@@ -75,48 +69,42 @@ export default function LoginForm() {
               setPassword(e.target.value)
               if (errors.password) setErrors({ ...errors, password: '' })
             }}
-            className={`w-full border p-3 pr-10 rounded-xl outline-none focus:ring-2 focus:ring-green-500 text-sm
-              ${errors.password ? 'border-red-400 bg-red-50' : 'border-gray-300'}`}
+            className={`pr-10 ${errors.password ? 'border-destructive' : ''}`}
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
           >
             {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
           </button>
         </div>
         {errors.password && (
-          <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+          <p className="text-destructive text-xs">{errors.password}</p>
         )}
       </div>
 
-      <div className="flex items-center justify-between">
-        <label htmlFor="remember" className="flex items-center gap-2 text-sm text-gray-500 cursor-pointer">
-          <input
-            id="remember"
-            name="remember"
-            type="checkbox"
-            className="w-4 h-4 accent-green-600"
-          />
+      <div className="flex items-center gap-2">
+        <Checkbox id="remember" name="remember" />
+        <Label htmlFor="remember" className="text-muted-foreground font-normal cursor-pointer">
           Remember me
-        </label>
+        </Label>
       </div>
 
-      <button
+      <Button
         type="submit"
-        className="w-full bg-indigo-700 text-white py-3 rounded-xl hover:bg-indigo-800 active:scale-95 transition text-sm font-semibold"
+        className="w-full bg-indigo-700 hover:bg-indigo-800 text-white transition-all duration-200 active:scale-95"
       >
         Login In
-      </button>
+      </Button>
 
       <div className="flex items-center justify-between text-sm">
-        <button type="button" className="text-gray-500 underline hover:text-gray-700">
+        <button type="button" className="text-muted-foreground underline hover:text-foreground">
           Forgot password?
         </button>
-        <span className="text-gray-400">
+        <span className="text-muted-foreground">
           Need an account?{' '}
-          <button type="button" className="text-indigo-600 underline">
+          <button type="button" className="text-indigo-600 underline hover:text-indigo-800">
             Sign up
           </button>
         </span>

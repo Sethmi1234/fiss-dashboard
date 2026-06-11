@@ -1,8 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { reports } from '@/lib/data'
 import NewReportModal from '@/components/dashboard/reports/NewReportModal'
+
+const tableVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const rowVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: { opacity: 1, x: 0 },
+}
 
 const typeStyles = {
   Collection: 'bg-blue-100 text-blue-700',
@@ -53,12 +68,17 @@ export default function ReportsPage() {
         </div>
 
         {/* Mobile cards */}
-        <div className="md:hidden divide-y divide-gray-100">
+        <motion.div
+          className="md:hidden divide-y divide-gray-100"
+          variants={tableVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {filtered.length === 0 ? (
             <p className="text-center text-gray-400 text-sm py-8">No reports found.</p>
           ) : (
             filtered.map((r) => (
-              <div key={r.id} className="p-4 flex flex-col gap-2">
+              <motion.div key={r.id} variants={rowVariants} className="p-4 flex flex-col gap-2">
                 <div className="flex items-start justify-between">
                   <p className="font-semibold text-gray-800 text-sm">{r.title}</p>
                   <span className={`px-2 py-1 rounded-full text-xs font-semibold shrink-0 ml-2 ${typeStyles[r.type]}`}>
@@ -77,10 +97,10 @@ export default function ReportsPage() {
                     Download
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))
           )}
-        </div>
+        </motion.div>
 
         {/* Desktop table */}
         <div className="hidden md:block overflow-x-auto">
@@ -96,7 +116,7 @@ export default function ReportsPage() {
                 <th className="px-4 py-3 text-left">Actions</th>
               </tr>
             </thead>
-            <tbody>
+            <motion.tbody variants={tableVariants} initial="hidden" animate="visible">
               {filtered.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="text-center text-gray-400 py-8">
@@ -105,7 +125,7 @@ export default function ReportsPage() {
                 </tr>
               ) : (
                 filtered.map((r) => (
-                  <tr key={r.id} className="border-t border-gray-100 hover:bg-gray-50">
+                  <motion.tr key={r.id} variants={rowVariants} className="border-t border-gray-100 hover:bg-gray-50">
                     <td className="px-4 py-3 text-gray-500">{r.id}</td>
                     <td className="px-4 py-3 font-medium text-gray-800">{r.title}</td>
                     <td className="px-4 py-3">
@@ -126,10 +146,10 @@ export default function ReportsPage() {
                         </button>
                       </div>
                     </td>
-                  </tr>
+                  </motion.tr>
                 ))
               )}
-            </tbody>
+            </motion.tbody>
           </table>
         </div>
 

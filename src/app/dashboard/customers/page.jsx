@@ -1,8 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { customers } from '@/lib/data'
 import NewCustomerModal from '@/components/dashboard/customers/NewCustomerModel'
+
+const tableVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const rowVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: { opacity: 1, x: 0 },
+}
 
 export default function CustomersPage() {
   const [showModal, setShowModal] = useState(false)
@@ -16,7 +31,7 @@ export default function CustomersPage() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition"
+          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-all duration-200 hover:scale-[1.02] active:scale-95"
         >
           + New Customer
         </button>
@@ -25,9 +40,14 @@ export default function CustomersPage() {
       {showModal && <NewCustomerModal onClose={() => setShowModal(false)} />}
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-        <div className="md:hidden divide-y divide-gray-100">
+        <motion.div
+          className="md:hidden divide-y divide-gray-100"
+          variants={tableVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {customers.map((c) => (
-            <div key={c.id} className="p-4 flex flex-col gap-1">
+            <motion.div key={c.id} variants={rowVariants} className="p-4 flex flex-col gap-1">
               <div className="flex items-center justify-between">
                 <p className="font-semibold text-gray-800">{c.name}</p>
                 <span className={`px-2 py-1 rounded-full text-xs font-semibold
@@ -39,9 +59,9 @@ export default function CustomersPage() {
               <p className="text-sm text-gray-600">{c.phone}</p>
               <p className="text-sm text-gray-600">{c.email}</p>
               <p className="text-xs text-gray-400">{c.loans} loan(s)</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="bg-gray-50 text-gray-500 uppercase text-xs">
@@ -54,9 +74,9 @@ export default function CustomersPage() {
                 <th className="px-4 py-3 text-left">Status</th>
               </tr>
             </thead>
-            <tbody>
+            <motion.tbody variants={tableVariants} initial="hidden" animate="visible">
               {customers.map((c) => (
-                <tr key={c.id} className="border-t border-gray-100 hover:bg-gray-50">
+                <motion.tr key={c.id} variants={rowVariants} className="border-t border-gray-100 hover:bg-gray-50">
                   <td className="px-4 py-3 text-gray-500">{c.id}</td>
                   <td className="px-4 py-3 font-medium text-gray-800">{c.name}</td>
                   <td className="px-4 py-3 text-gray-600">{c.phone}</td>
@@ -68,9 +88,9 @@ export default function CustomersPage() {
                       {c.status}
                     </span>
                   </td>
-                </tr>
+                </motion.tr>
               ))}
-            </tbody>
+            </motion.tbody>
           </table>
         </div>
         <div className="px-4 py-3 text-xs text-gray-400 border-t border-gray-100">

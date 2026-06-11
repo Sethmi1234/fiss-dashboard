@@ -38,7 +38,7 @@ export const microLoans = [
 ]
 
 export const customers = [
-  { id: 'C-001', name: 'Dmp Dissanayake C', phone: '+94786611863', email: 'dmp@email.com', loans: 5, status: 'Active' },
+  { id: 'C-001', name: 'Shanilka Madhawa', phone: '+94786611863', email: 'dmp@email.com', loans: 5, status: 'Active' },
   { id: 'C-002', name: 'Ravi Fernando', phone: '+94712345678', email: 'ravi@email.com', loans: 2, status: 'Active' },
   { id: 'C-003', name: 'Kamal Perera', phone: '+94771234567', email: 'kamal@email.com', loans: 1, status: 'Inactive' },
 ]

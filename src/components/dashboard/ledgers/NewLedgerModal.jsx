@@ -2,22 +2,17 @@
 
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function NewLedgerModal({ onClose }) {
   const [errors, setErrors] = useState({})
   const [form, setForm] = useState({
-    description: '',
-    type: '',
-    amount: '',
-    category: '',
-    date: '',
+    description: '', type: '', amount: '', category: '', date: '',
   })
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: '' })
-    }
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: '' })
   }
 
   const validate = () => {
@@ -43,12 +38,22 @@ export default function NewLedgerModal({ onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md">
-
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+        transition={{ duration: 0.2 }}
+        className="bg-white rounded-2xl shadow-xl w-full max-w-md"
+      >
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <h2 className="text-lg font-bold text-gray-800">New Ledger Entry</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -60,12 +65,9 @@ export default function NewLedgerModal({ onClose }) {
               Description *
             </label>
             <input
-              id="ldg-description"
-              name="description"
-              type="text"
+              id="ldg-description" name="description" type="text"
               placeholder="e.g. Loan Repayment - ECL-001"
-              value={form.description}
-              onChange={handleChange}
+              value={form.description} onChange={handleChange}
               className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-yellow-400
                 ${errors.description ? 'border-red-400 bg-red-50' : 'border-gray-200'}`}
             />
@@ -77,10 +79,8 @@ export default function NewLedgerModal({ onClose }) {
               Type *
             </label>
             <select
-              id="ldg-type"
-              name="type"
-              value={form.type}
-              onChange={handleChange}
+              id="ldg-type" name="type"
+              value={form.type} onChange={handleChange}
               className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-yellow-400
                 ${errors.type ? 'border-red-400 bg-red-50' : 'border-gray-200'}`}
             >
@@ -96,12 +96,9 @@ export default function NewLedgerModal({ onClose }) {
               Amount (Rs.) *
             </label>
             <input
-              id="ldg-amount"
-              name="amount"
-              type="number"
+              id="ldg-amount" name="amount" type="number"
               placeholder="Enter amount"
-              value={form.amount}
-              onChange={handleChange}
+              value={form.amount} onChange={handleChange}
               className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-yellow-400
                 ${errors.amount ? 'border-red-400 bg-red-50' : 'border-gray-200'}`}
             />
@@ -113,10 +110,8 @@ export default function NewLedgerModal({ onClose }) {
               Category *
             </label>
             <select
-              id="ldg-category"
-              name="category"
-              value={form.category}
-              onChange={handleChange}
+              id="ldg-category" name="category"
+              value={form.category} onChange={handleChange}
               className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-yellow-400
                 ${errors.category ? 'border-red-400 bg-red-50' : 'border-gray-200'}`}
             >
@@ -135,11 +130,8 @@ export default function NewLedgerModal({ onClose }) {
               Date *
             </label>
             <input
-              id="ldg-date"
-              name="date"
-              type="date"
-              value={form.date}
-              onChange={handleChange}
+              id="ldg-date" name="date" type="date"
+              value={form.date} onChange={handleChange}
               className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-yellow-400
                 ${errors.date ? 'border-red-400 bg-red-50' : 'border-gray-200'}`}
             />
@@ -148,22 +140,21 @@ export default function NewLedgerModal({ onClose }) {
 
           <div className="flex gap-3 pt-2">
             <button
-              type="button"
-              onClick={onClose}
-              className="flex-1 border border-gray-200 text-gray-600 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition"
+              type="button" onClick={onClose}
+              className="flex-1 border border-gray-200 text-gray-600 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-all duration-200 active:scale-95"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 bg-green-500 text-white py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition"
+              className="flex-1 bg-green-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-all duration-200 active:scale-95"
             >
               Save Entry
             </button>
           </div>
 
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
