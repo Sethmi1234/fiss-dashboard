@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { useState } from 'react'
 import {
   LayoutDashboard,
   ArrowLeftRight,
@@ -10,9 +11,11 @@ import {
   Star,
   Users,
   UserCheck,
+  LogOut,
+  ChevronLeft,
+  ChevronRight,
   FileText,
   BookOpen,
-  LogOut
 } from 'lucide-react'
 
 const navItems = [
@@ -29,25 +32,51 @@ const navItems = [
 export default function Sidebar({ onClose }) {
   const pathname = usePathname()
   const router = useRouter()
+  const [collapsed, setCollapsed] = useState(false)
 
   const handleLogout = () => {
     router.push('/login')
   }
 
   return (
-    <aside className="w-56 bg-white border-r border-gray-200 flex flex-col py-6 px-3 min-h-screen">
+    <aside
+      className={`
+        bg-white border-r border-gray-200 flex flex-col py-6 min-h-screen
+        transition-all duration-300 ease-in-out
+        ${collapsed ? 'w-16 px-2' : 'w-56 px-3'}
+      `}
+    >
 
-      {/* Logo */}
-      <div className="px-3 mb-8 flex flex-col items-start gap-2">
-        <Image
-          src="/2logo.png"
-          alt="FINEXA logo"
-          width={5000}
-          height={5000}
-          className="h-20 w-20 object-contain"
-          priority
-        />
-        <span className="text-lg font-semibold tracking-[0.18em] text-gray-700">FINEXA</span>
+      {/* Logo + collapse button */}
+      <div className={`
+        flex items-center mb-8 px-1
+        ${collapsed ? 'justify-center' : 'justify-between'}
+      `}>
+
+        {/* Logo - hide text when collapsed */}
+        {!collapsed && (
+          <div className="flex flex-col items-start gap-1 transition-all duration-300">
+            <Image
+              src="/2logo.png"
+              alt="FINEXA logo"
+              width={5000}
+              height={5000}
+              className="h-14 w-14 object-contain"
+              priority
+            />
+            <span className="text-lg font-semibold tracking-[0.18em] text-gray-700">
+              FINEXA
+            </span>
+          </div>
+        )}
+
+        {/* Collapse toggle button */}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="p-1.5 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all duration-200"
+        >
+          {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+        </button>
       </div>
 
       {/* Nav Links */}
@@ -60,28 +89,47 @@ export default function Sidebar({ onClose }) {
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium
+              title={collapsed ? item.label : ''}
+              className={`
+                flex items-center rounded-md text-sm font-medium
                 transition-all duration-200 hover:scale-[1.02] active:scale-95
+                ${collapsed ? 'justify-center px-2 py-2.5' : 'gap-3 px-3 py-2'}
                 ${isActive
                   ? 'bg-green-100 text-green-700'
                   : 'text-gray-600 hover:bg-gray-100'
-                }`}
+                }
+              `}
             >
-              <Icon size={18} />
-              {item.label}
+              <Icon size={18} className="shrink-0" />
+              {/* Label fades out when collapsed */}
+              {!collapsed && (
+                <span className="transition-all duration-300 overflow-hidden whitespace-nowrap">
+                  {item.label}
+                </span>
+              )}
             </Link>
           )
         })}
       </nav>
 
-      {/* Logout */}
-      <div className="mt-auto px-2">
+      {/* Logout button */}
+      <div className="mt-auto">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium bg-blue-900 text-white hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] active:scale-95"
+          title={collapsed ? 'Logout' : ''}
+          className={`
+            w-full flex items-center rounded-md text-sm font-medium
+            bg-red-500 text-white hover:bg-red-600
+            transition-all duration-200 hover:scale-[1.02] active:scale-95
+            ${collapsed ? 'justify-center px-2 py-2.5' : 'gap-3 px-3 py-2'}
+          `}
         >
-          <LogOut size={18} />
-          Logout
+          <LogOut size={18} className="shrink-0" />
+          {!collapsed && (
+            <span className="transition-all duration-300 overflow-hidden whitespace-nowrap">
+              Logout
+            </span>
+          )}
         </button>
       </div>
 
