@@ -49,7 +49,7 @@ export default function LoginForm() {
             setUsername(e.target.value)
             if (errors.username) setErrors({ ...errors, username: '' })
           }}
-          className={errors.username ? 'border-destructive' : ''}
+          className={`h-11 px-4 text-base ${errors.username ? 'border-destructive' : ''}`}
         />
         {errors.username && (
           <p className="text-destructive text-xs">{errors.username}</p>
@@ -69,7 +69,7 @@ export default function LoginForm() {
               setPassword(e.target.value)
               if (errors.password) setErrors({ ...errors, password: '' })
             }}
-            className={`pr-10 ${errors.password ? 'border-destructive' : ''}`}
+            className={`h-11 px-4 text-base pr-10 ${errors.password ? 'border-destructive' : ''}`}
           />
           <button
             type="button"
@@ -93,7 +93,7 @@ export default function LoginForm() {
 
       <Button
         type="submit"
-        className="w-full bg-indigo-700 hover:bg-indigo-800 text-white transition-all duration-200 active:scale-95"
+        className="w-full h-11 text-base bg-indigo-700 hover:bg-indigo-800 text-white transition-all duration-200 active:scale-95"
       >
         Login In
       </Button>

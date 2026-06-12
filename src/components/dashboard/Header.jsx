@@ -36,7 +36,7 @@ export default function Header() {
       {/* Mobile overlay + drawer */}
       {menuOpen && (
         <>
-          {/* Dark background - starts after sidebar width so sidebar area stays visible */}
+          {/* Dark background */}
           <div
             className="fixed top-0 left-56 right-0 bottom-0 bg-black/40 z-40 lg:hidden"
             onClick={() => setMenuOpen(false)}
@@ -54,8 +54,11 @@ export default function Header() {
                 <X size={18} />
               </button>
 
-              {/* Sidebar component */}
-              <Sidebar onClose={() => setMenuOpen(false)} />
+              {/* Pass isMobile so collapse button is hidden */}
+              <Sidebar
+                onClose={() => setMenuOpen(false)}
+                isMobile={true}
+              />
 
             </div>
           </div>
